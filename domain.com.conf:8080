@@ -1,0 +1,16 @@
+<VirtualHost 127.0.0.1:8080>
+ServerName domain.com
+ServerAlias www.domain.com
+DocumentRoot /home/hes/domain.com/www
+ErrorLog /var/log/httpd/domain.com-error.log
+CustomLog /var/log/httpd/domain.com-access.log common
+SetEnv HTTPS 1
+<Directory /home/hes/domain.com/www>
+Options FollowSymLinks
+AllowOverride All
+Require all granted
+</Directory>
+php_admin_value date.timezone 'Europe/Amsterdam'
+php_admin_value max_execution_time 60
+php_admin_value upload_max_filesize 30M
+</VirtualHost>
