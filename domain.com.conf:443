@@ -4,11 +4,10 @@ server {
       return 301 https://$host$request_uri;
 }
 server {
-        listen 78.140.162.218:443 ssl;
+        listen IPADDRESS:443 ssl;
         server_name domain.com www.domain.com;
             ssi on;
     ssi_silent_errors on;
-    ssi_types text/html;
         ssl_certificate /etc/nginx/ssl/domain.com.all;
         ssl_certificate_key /etc/nginx/ssl/domain.com.key;
         ssl_session_timeout 1d;
