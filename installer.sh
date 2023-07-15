@@ -26,15 +26,15 @@ chown -R hes:hes /home/hes/$domain
 chmod -R 0775 /home/hes/$domain
 chmod 0755 /home/hes
 mkdir /etc/httpd/vhosts.d
-curl -o /etc/httpd/vhosts.d/$domain.conf https://raw.githubusercontent.com/chupikoff/nginx_http/main/domain.com.conf%3A8080
+curl -o /etc/httpd/vhosts.d/$domain.conf https://raw.githubusercontent.com/chupikoff/conf/main/domain.com.conf%3A8080
 sed -i "s/domain\.com/$domain/g" /etc/httpd/vhosts.d/$domain.conf
-curl -o /etc/httpd/conf/httpd.conf https://raw.githubusercontent.com/chupikoff/nginx_http/main/httpd.conf
+curl -o /etc/httpd/conf/httpd.conf https://raw.githubusercontent.com/chupikoff/conf/main/httpd.conf
 mkdir /etc/nginx/vhosts.d
-curl -o /etc/nginx/vhosts.d/$domain.conf https://raw.githubusercontent.com/chupikoff/nginx_http/main/domain.com.conf%3A80
+curl -o /etc/nginx/vhosts.d/$domain.conf https://raw.githubusercontent.com/chupikoff/conf/main/domain.com.conf%3A80
 sed -i "s/domain\.com/$domain/g" /etc/nginx/vhosts.d/$domain.conf
 sed -i "s/IPADDRESS/$IP/g" /etc/nginx/vhosts.d/$domain.conf
-curl -o /etc/nginx/nginx.conf https://raw.githubusercontent.com/chupikoff/nginx_http/main/nginx.conf
-curl -o /etc/nginx/universal-proxy.conf https://raw.githubusercontent.com/chupikoff/nginx_http/main/universal-proxy.conf
+curl -o /etc/nginx/nginx.conf https://raw.githubusercontent.com/chupikoff/conf/main/nginx.conf
+curl -o /etc/nginx/universal-proxy.conf https://raw.githubusercontent.com/chupikoff/conf/main/universal-proxy.conf
 firewall-cmd --permanent --add-service=http
 firewall-cmd --permanent --add-service=https
 firewall-cmd --reload
@@ -42,4 +42,3 @@ systemctl start httpd
 systemctl start nginx
 systemctl enable httpd
 systemctl enable nginx
-
