@@ -2,7 +2,6 @@
 echo "Enter domain"
 read domain
 IP=$(ping -c 1 $domain | awk -F'[()]' '/PING/{print $2}')
-yum -y install epel-release
 rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum -y install yum-utils
 yum-config-manager --enable remi-php74
